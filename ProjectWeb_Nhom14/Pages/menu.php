@@ -7,15 +7,15 @@
                             <a href="index.php" class="nav-item nav-link active">Home</a>
                             <a href="index.php?quanly=giohang" class="nav-item nav-link">Cart</a>
                             <a href="index.php?quanly=checkout" class="nav-item nav-link">Checkout</a>
-                            <a href="Pages/login.php" class="nav-item nav-link">Login </a>
+        
                             <a href="Pages/register.php" class="nav-item nav-link"> Register</a>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Products</a>
                                 <div class="dropdown-menu">
-                                    <?php if(isset($_SESSION['cart'])){?>
+                                    <?php if(isset($_SESSION['nameUser'])){?>
                                     <a href="index.php?quanly=giohang" class="dropdown-item">Wishlist</a>
                                     <?php }else{?>
-                                        <a href="#" class="dropdown-item">Wishlist</a>
+                                        <a href="index.php?quanly=yeuthich" class="dropdown-item">Wishlist</a>
                                         <?php }?> 
                                     <?php 
                                     while($row_danhmuc = mysqli_fetch_array($querydanhmuc)){
@@ -41,7 +41,7 @@
                                 ?></a>
                     
                                 <div class="dropdown-menu">
-                                <a href="Pages/changePass.php" class="dropdown-item">
+                                <a href="/Pages/changePass.php" class="nav-link dropdown-toggle" data-toggle="dropdown">
                                     Đổi Mật Khẩu
                                 </a>
                                     <a href="Pages/handleLogout.php" class="dropdown-item">Logout</a>
@@ -50,7 +50,7 @@
                           
                             <?php else: ?>
                                 <div class="nav-item dropdown">
-                          <a href="http://localhost:8080/%C4%90%E1%BB%93%20%C3%81n%20Web2/Pages/login.php" class="dropdown-item">Login</a>
+                          <a href="http://localhost/%C4%90%E1%BB%93%20%C3%81n%20Web2/Pages/login.php" class="dropdown-item">Login</a>
                                 </div>
                         
                              </div>

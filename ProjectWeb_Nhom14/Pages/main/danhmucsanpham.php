@@ -1,6 +1,6 @@
 <?php 
-if(isset($_GET['page'])){
-    $page=$_GET['page'];
+if(isset($_GET['trang'])){
+    $page=$_GET['trang'];
 }else{
     $page='';
 }
@@ -10,7 +10,7 @@ if($page==''||$page==1){
 else{
     $begin=($page*3)-3;
 }
-$sql_pro="SELECT *FROM  tbl_sanpham Where  tbl_sanpham.id_danhmuc='$_GET[id]' 
+$sql_pro="SELECT *FROM  tbl_sanpham,tbl_danhmuc Where  tbl_sanpham.id_danhmuc='$_GET[id]'
 ORDER BY tbl_sanpham.id_sanpham DESC LIMIT $begin,3";
 $query_pro=mysqli_query($mysqli,$sql_pro);
 $sql_cate="SELECT *FROM  tbl_danhmuc Where  tbl_danhmuc.iddanhmuc='$_GET[id]' ";
@@ -125,9 +125,10 @@ $row_tiltle=mysqli_fetch_array($query_cate);
                             <nav aria-label="Page navigation example">
                             <?php
                              
-                                   $result=mysqli_query($mysqli,'SELECT * From tbl_sanpham');
+                                   $result=mysqli_query($mysqli,'SELECT * From tbl_sanpham, tbl_danhmuc');
                                    $row_db=mysqli_num_rows($result);
-                                   $page=ceil($row_db/3);
+                                   echo $row_db;
+                                   $trang=ceil($row_db/3);
                                    ?>
                                 <ul class="pagination justify-content-center">
                                  
@@ -136,13 +137,14 @@ $row_tiltle=mysqli_fetch_array($query_cate);
                                     </li>
                                  
                                     <?php
-                                  for($i=1;$i<=$page;$i++){
+                                  for($i=1;$i<=3;$i++){
                                   ?>
                                     <li class="page-item active"><a class="page-link" 
                                     href="index.php?quanly=danhmucsanpham&id=<?php echo $i ?>"><?php echo $i?></a></li>
                                     <?php
                                   }
                                    ?>
+                                   
                                     <!--
                                     <li class="page-item"><a class="page-link" href="#">2</a></li>
                                     <li class="page-item"><a class="page-link" href="#">3</a></li>

@@ -21,9 +21,9 @@
        else if($pivot=="checkout")
        {
         include("./Pages/main/checkout.php");
-       }else if($pivot=="myaccount")
+       }else if($pivot=="yeuthich")
        {
-        include("Admin/index.php");
+        include("./Pages/main/dsyeuthich.php");
        }
        ?>
         

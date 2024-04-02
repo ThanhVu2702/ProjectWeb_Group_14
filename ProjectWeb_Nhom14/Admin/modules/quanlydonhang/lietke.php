@@ -1,7 +1,6 @@
 <?php
-$sql_lietkedsdonhang="SELECT * FROM tbl_cart,tbl_taikhoan,tbl_khachhang WHERE tbl_cart.id_khachhang=tbl_taikhoan.USERID 
-AND tbl_cart.id_khachhang=tbl_khachhang.USERID_KH
-ORDER BY tbl_cart.id_cart DESC";
+$sql_lietkedsdonhang="SELECT * FROM tbl_cart,tbl_taikhoan, tbl_khachhang WHERE tbl_cart.id_khachhang=tbl_taikhoan.USERID AND 
+tbl_cart.id_khachhang=tbl_khachhang.MAKH ";
 $querry_lietkedonhang = mysqli_query($mysqli,$sql_lietkedsdonhang);
 ?>
 
@@ -14,6 +13,8 @@ $querry_lietkedonhang = mysqli_query($mysqli,$sql_lietkedsdonhang);
      <th>Email</th>
      <th>Địa Chỉ</th>
      <th>SDT</th>
+     <th>Tình Trạng</th>
+     <th>Quản lý</th>
 </tr>
 <?php
 $i=0;
@@ -27,6 +28,15 @@ $i++;
     <td><?php echo $row_dh['EMAIL']?></td>
     <td><?php echo $row_dh['DIACHI']?></td>
     <td><?php echo $row_dh['SDT']?></td>   
+    <td>
+     <?php
+     if($row_dh['cart_status']==1)
+     echo 'New bill';
+    else{
+        echo 'Seen';
+    }
+     ?>
+    </td>
     <td>
         <a href="index.php?action=donhang&query=xemdonhang&code=<?php echo $row_dh['code_cart']?>">Xem Đơn Hàng</a>
     </td>

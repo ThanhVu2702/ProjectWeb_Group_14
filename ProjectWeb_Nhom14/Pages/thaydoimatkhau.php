@@ -69,7 +69,7 @@ session_start();
                 }
                 if (username != '' && password != '') {
                     $.ajax({
-                        url: 'handlelogin.php',
+                        url: '.php',
                         type: 'POST',
                         data: {
                             user: username,
