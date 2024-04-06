@@ -9,9 +9,6 @@ body {
 }
 
 .select-container {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
     background-color: transparent;
     border: none;
     padding: 8px 24px 8px 12px;
@@ -21,6 +18,9 @@ body {
 }
 .select-container {
     border: none;
+}
+a{
+    text-decoration: none;
 }
 a {
     color: #ff6f61;
