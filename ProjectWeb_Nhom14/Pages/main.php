@@ -12,18 +12,21 @@
        }
        if($pivot=="danhmucsanpham"){
         include("./Pages/main/danhmucsanpham.php");
-       }else if($pivot=="sanpham"){
+       }elseif($pivot=="sanpham"){
           include("./Pages/main/sanpham.php");
-       }else if($pivot=="giohang")
+       }elseif($pivot=="giohang")
        {
         include("./Pages/main/giohang.php");
        }
-       else if($pivot=="checkout")
+       elseif($pivot=="checkout")
        {
         include("./Pages/main/checkout.php");
-       }else if($pivot=="yeuthich")
+       }elseif($pivot=="yeuthich")
        {
         include("./Pages/main/dsyeuthich.php");
+       }
+       elseif($pivot=="timkiem"){
+        include("./Pages/main/timkiem.php");
        }
        ?>
         

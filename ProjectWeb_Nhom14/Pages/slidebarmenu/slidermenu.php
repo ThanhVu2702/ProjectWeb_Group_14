@@ -12,10 +12,10 @@
                                     <a class="nav-link" href="#"><i class="fa fa-headphones"></i>New Arrivals</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-walkie-talkie"></i>Fashion & Beauty</a>
+                                    <a class="nav-link" href="#"><i class="fa fa-headphones"></i>Fashion & Beauty</a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link" href="#"><i class="fa fa-walkie-talkie"></i>Kids & Babies Clothes</a>
+                                    <a class="nav-link" href="#"><i class="fa fa-headphones"></i>Kids & Babies Clothes</a>
                                 </li>
                                 <li class="nav-item">
                                     <a class="nav-link" href="#"><i class="fa fa-headphones"></i>Men & Women Clothes</a>

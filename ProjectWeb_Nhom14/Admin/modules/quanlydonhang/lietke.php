@@ -31,10 +31,12 @@ $i++;
     <td>
      <?php
      if($row_dh['cart_status']==1)
-     echo 'New bill';
-    else{
-        echo 'Seen';
-    }
+     {
+       echo '<a href="modules/quanlydonhang/xuly.php?code='.$row_dh['code_cart'].'">New bill</a>';
+     }
+      else{
+       echo 'Seen';
+      }
      ?>
     </td>
     <td>

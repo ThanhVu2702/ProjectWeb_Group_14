@@ -77,12 +77,12 @@ session_start();
                         },
                         success: function(data) {
                             if (data == 'success-user') {
-								window.location.href = "http://localhost/%C4%90%E1%BB%93%20%C3%81n%20Web2/index.php";
+								window.location.href = "http://localhost:8080/%C4%90%E1%BB%93%20%C3%81n%20Web2/index.php";
                             } else if (data == '') {
                                $('.username-error').html('Account don\'t exitst. Please enter create account').addClass('text-danger');
                              
                             } else if (data == 'success-admin') {
-                                window.location.href = 'http://localhost/%C4%90%E1%BB%93%20%C3%81n%20Web2/Admin/index.php';
+                                window.location.href = 'http://localhost:8080/%C4%90%E1%BB%93%20%C3%81n%20Web2/Admin/index.php';
                             } else if (data == 'fail-pass') {
                                 $('.password-error').html('Incorrect password').addClass('text-danger');
                             }

@@ -1,4 +1,4 @@
-<?php 
+<?php
 if(isset($_GET['trang'])){
     $page=$_GET['trang'];
 }else{
@@ -10,31 +10,28 @@ if($page==''||$page==1){
 else{
     $begin=($page*3)-3;
 }
+if(isset($_POST['timkiem'])){
+    $tukhoa=$_POST['tukhoa'];
+}
 
-$sql_pro="SELECT *FROM  tbl_sanpham,tbl_danhmuc Where  tbl_sanpham.id_danhmuc='$_GET[id]'
-ORDER BY tbl_sanpham.id_sanpham DESC LIMIT $begin,3";
-$querysearch=mysqli_query($mysqli,$sql_pro);
-$row_search=mysqli_fetch_array($querysearch);
-$query_pro=mysqli_query($mysqli,$sql_pro);
-$sql_cate="SELECT *FROM  tbl_danhmuc Where  tbl_danhmuc.iddanhmuc='$_GET[id]' ";
-$query_cate=mysqli_query($mysqli,$sql_cate);
-$row_tiltle=mysqli_fetch_array($query_cate);
+$sql_pro1="SELECT * FROM tbl_sanpham, tbl_danhmuc WHERE  tbl_sanpham.id_danhmuc=tbl_danhmuc.iddanhmuc AND tbl_sanpham.tensanpham LIKE '%".$tukhoa."'" ;
+$query_pro1=mysqli_query($mysqli,$sql_pro1);
 
-?>
-     
+
+?>     
     <body>
     
-        <!-- Breadcrumb Start -->
+        <!-- Breadcrumb Start --
         <div class="breadcrumb-wrap">
             <div class="container-fluid">
                 <ul class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="#">Home</a></li>
-                    <li class="breadcrumb-item"><a href="#"><?php echo $row_tiltle['tendanhmuc']?></a></li>
-                    <li class="breadcrumb-item active">List:<?php echo $row_tiltle['tendanhmuc']?></li>
+                <li class="breadcrumb-item"><a href="#">Home</a></li>
+                    <li class="breadcrumb-item"><a href="#">Title</a></li>
+                    <li class="breadcrumb-item active"></li>
                 </ul>
             </div>
         </div>
-        <!-- Breadcrumb End -->
+         Breadcrumb End -->
         
         <!-- Product List Start -->
         <div class="product-view">
@@ -47,9 +44,9 @@ $row_tiltle=mysqli_fetch_array($query_cate);
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="product-search">
-                                                <form action="index.php?quanly=timkiem"  method="POST">
-                                                <input type="text" name="tukhoa" placeholder="Search">
-                                                <button type="submit" name="timkiem"><i class="fa fa-search"></i></button>
+                                                <form action="index.php?quanly=timkiem" method="GET">
+                                                <input type="text" name="timkiem" placeholder="Search">
+                                                <button><i class="fa fa-search"></i></button>
                                                 </form>
                                             </div>
                                         </div>
@@ -87,7 +84,8 @@ $row_tiltle=mysqli_fetch_array($query_cate);
                                     </div>
                                 </div>
                             </div>
-                            <?php  while($row_pro=mysqli_fetch_array($query_pro)){ ?>
+                            <?php  while($row_pro=mysqli_fetch_array($query_pro1)){ ?>
+                                <h3><?php $_POST['tukhoa'] ?></h3>
                             <div class="col-md-4">
                                 <div class="product-item">
                                     <div class="product-title">
@@ -346,6 +344,6 @@ $row_tiltle=mysqli_fetch_array($query_cate);
             </div>
         </div>
         <!-- Brand End -->
+        
     </body>
-       
      
