@@ -1,31 +1,4 @@
--- phpMyAdmin SQL Dump
--- version 5.2.1
--- https://www.phpmyadmin.net/
---
--- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th1 21, 2024 lúc 07:25 AM
--- Phiên bản máy phục vụ: 10.4.32-MariaDB
--- Phiên bản PHP: 8.2.12
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Cơ sở dữ liệu: `webmysqli`
---
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `tbl_cart`
---
 
 CREATE TABLE `tbl_cart` (
   `id_khachhang` int(11) NOT NULL,
@@ -33,18 +6,12 @@ CREATE TABLE `tbl_cart` (
   `cart_status` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Đang đổ dữ liệu cho bảng `tbl_cart`
---
+
 
 INSERT INTO `tbl_cart` (`id_khachhang`, `code_cart`, `cart_status`) VALUES
 (1, '4119', 1);
 
--- --------------------------------------------------------
 
---
--- Cấu trúc bảng cho bảng `tbl_cart_details`
---
 
 CREATE TABLE `tbl_cart_details` (
   `id_sanpham` int(11) NOT NULL,
@@ -60,11 +27,7 @@ INSERT INTO `tbl_cart_details` (`id_sanpham`, `code_cart`, `soluong`) VALUES
 (1, '4119', 2),
 (2, '4119', 2);
 
--- --------------------------------------------------------
 
---
--- Cấu trúc bảng cho bảng `tbl_danhmuc`
---
 
 CREATE TABLE `tbl_danhmuc` (
   `iddanhmuc` int(11) NOT NULL,
@@ -72,9 +35,6 @@ CREATE TABLE `tbl_danhmuc` (
   `thutu` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Đang đổ dữ liệu cho bảng `tbl_danhmuc`
---
 
 INSERT INTO `tbl_danhmuc` (`iddanhmuc`, `tendanhmuc`, `thutu`) VALUES
 (1, 'Ốp Lưng Điện Thoại', 1),
@@ -96,9 +56,6 @@ CREATE TABLE `tbl_khachhang` (
   `enable_kh` tinyint(1) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Đang đổ dữ liệu cho bảng `tbl_khachhang`
---
 
 INSERT INTO `tbl_khachhang` (`MAKH`, `HOKH`, `TENKH`, `USERID_KH`, `DIACHI`, `SDT`, `enable_kh`) VALUES
 (1, 'Lê Bá', 'Khải', 1, 'HCM', 862106951, 1);
@@ -118,9 +75,7 @@ CREATE TABLE `tbl_nhanvien` (
   `USERID_NV` int(6) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
---
--- Đang đổ dữ liệu cho bảng `tbl_nhanvien`
---
+
 
 INSERT INTO `tbl_nhanvien` (`MANV`, `HONV`, `TENNV`, `DIACHI`, `SDT`, `USERID_NV`) VALUES
 (1001, 'Vũ Mai Lan', 'Hương', '8 Điện Biên Phủ', 8330733, 5),
@@ -337,6 +292,4 @@ ALTER TABLE `tbl_taikhoan`
   ADD CONSTRAINT `taikhoan_quyen` FOREIGN KEY (`MAQUYEN`) REFERENCES `tbl_quyen` (`MAQUYEN`);
 COMMIT;
 
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+

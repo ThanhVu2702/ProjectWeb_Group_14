@@ -79,7 +79,7 @@ $query_newpro=mysqli_query($mysqli,$sql_pro2);
                                 <div class="product-action">
                                     <a href="Pages/main/themgiohang.php?idsanpham=<?php echo $row_sanpham['id_sanpham']?>"><i class="fa fa-cart-plus"></i></a>
                                    
-                                    <a href="#"><i class="fa fa-heart"></i></a>
+                                    <a href="Pages/main/themyeuthich.php?idsanpham=<?php echo $row_sanpham['id_sanpham']?>"><i class="fa fa-heart"></i></a>
                                     <a href="index.php?quanly=sanpham&id=<?php echo $row_sanpham['id_sanpham']?>"><i class="fa fa-search"></i></a>
                                 </div>
                             </div>

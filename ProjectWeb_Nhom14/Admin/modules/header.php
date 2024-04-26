@@ -9,7 +9,7 @@
 
                     <div class="collapse navbar-collapse justify-content-between" id="navbarCollapse">
                     <div class="navbar-nav mr-auto">
-                            <a href="http://localhost/%C4%90%E1%BB%93%20%C3%81n%20Web2/index.php" class="nav-item nav-link active">Home</a>
+                            <a href="http://localhost:8080/%C4%90%E1%BB%93%20%C3%81n%20Web2/index.php" class="nav-item nav-link active">Home</a>
                             <a href="index.php?quanly=danhmucsanpham&id=1" class="nav-item nav-link">Products</a>
                             <a href="#" class="nav-item nav-link">Product Detail</a>
                             <a href="#" class="nav-item nav-link">Cart</a>
