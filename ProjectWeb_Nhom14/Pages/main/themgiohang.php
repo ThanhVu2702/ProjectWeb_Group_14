@@ -66,9 +66,10 @@ if(isset($_SESSION['cart'])&&$_GET['xoa']){
         unset($_SESSION['cart']);
         header('Location:../../index.php?quanly=giohang');
     }
+    if(isset($_POST['themgiohang'])){
     $id=$_GET['idsanpham'];
     $soluong=1;
-    $sql="SELECT * FROM tbl_sanpham, tbl_danhmuc WHERE id_sanpham='".$id."' LIMIT 1";
+    $sql="SELECT * FROM tbl_sanpham WHERE id_sanpham='".$id."' LIMIT 1";
     $query=mysqli_query($mysqli,$sql);
     $row=mysqli_fetch_array($query);
     if($row){
@@ -80,7 +81,8 @@ if(isset($_SESSION['cart'])&&$_GET['xoa']){
            foreach($_SESSION['cart'] as $cart_item){
             if($cart_item['id']==$id)
             {
-        $product[]=array('tensanpham'=>$cart_item['tensanpham'],'id'=>$cart_item['id'],'soluong'=>$soluong+1,
+              
+        $product[]=array('tensanpham'=>$cart_item['tensanpham'],'id'=>$cart_item['id'],'soluong'=>$cart_item['soluong']+1,
         'giasp'=>$cart_item['giasp'],'hinhanh'=>$cart_item['hinhanh']
        );
              $found=true;
@@ -103,6 +105,5 @@ if(isset($_SESSION['cart'])&&$_GET['xoa']){
     }
     //print_r($_SESSION['cart'] );
    header('Location:../../index.php?quanly=giohang');
-   
-
+}
 ?>

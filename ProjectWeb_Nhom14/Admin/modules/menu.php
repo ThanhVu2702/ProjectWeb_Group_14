@@ -5,5 +5,6 @@
     <li style="display: inline-block;"><a style="padding-left:10px" href="index.php?action=quanlytaikhoan&query=them"> Quản Lý Tài Khoản</a></li>
     <li style="display: inline-block;"><a style="padding-left:10px" href="index.php?action=quanlysanpham&query=them">Quản Lý Sản Phẩm</a></li>
     <li style="display: inline-block;"><a style="padding-left:10px" href="index.php?action=quanlydonhang&query=lietke">Quản Lý Thanh Toán </a></li>
+    <li style="display: inline-block;"><a style="padding-left:10px" href="index.php?dashboard.php">Thống Kê</a></li>
 </ul>
 

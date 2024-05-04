@@ -32,17 +32,19 @@
                     </div>
                     <div class="col-md-6">
                         <div class="search">
-                            <input type="text" placeholder="Search">
-                            <button><i class="fa fa-search"></i></button>
+                        <form action="index.php?quanly=timkiem"  method="POST">
+                            <input type="text" name="tukhoa" placeholder="Search">
+                             <button type="submit" name="timkiem"><i class="fa fa-search"></i></button>
+                            </form>
                         </div>
                     </div>
                     <div class="col-md-3">
                         <div class="user">
-                            <a href="wishlist.html" class="btn wishlist">
+                            <a href="index.php?quanly=yeuthich" class="btn wishlist">
                                 <i class="fa fa-heart"></i>
                                 <span>(0)</span>
                             </a>
-                            <a href="Pages/main/themgiohang.php" class="btn cart">
+                            <a href="index.php?quanly=giohang" class="btn cart">
                                 <i class="fa fa-shopping-cart"></i>
                                 <span>(0)</span>
                             </a>

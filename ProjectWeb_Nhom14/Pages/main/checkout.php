@@ -1,4 +1,5 @@
  <!-- Breadcrumb Start -->
+
  <div class="breadcrumb-wrap">
             <div class="container-fluid">
                 <ul class="breadcrumb">
@@ -15,16 +16,63 @@
             <div class="container-fluid"> 
                 <div class="row">
                     <div class="col-lg-8">
+                        <?php 
+                        
+                        if(isset($_POST['checkout'])){
+                             $name=$_POST['name'];
+                             $phone=$_POST['phone'];
+                             $address=$_POST['address'];
+                             $note=$_POST['note'];
+                             $dangky=$_SESSION['IDCustomer'];
+                             $payment=$_POST['payment'];
+                             $sql_checkout=mysqli_query($mysqli,"INSERT INTO tbl_shipping(name,phone,address,note,id_dangky,payment) VALUES('$name','$phone','$address','$note','$dangky','$payment')");
+                             if($sql_checkout){
+                                unset($_SESSION['cart']);
+                                echo '<script> alert("Updated successfully")</script>';
+                               
+                             }
+                            
+                        }
+                        ?>
                         <div class="checkout-inner">
-                       <?php if(!isset($_SESSION['nameUser'])||!isset($_SESSION['cart'])){
-                        echo '<p>Bạn Chưa Mua Hàng</p>';
-                       }elseif(isset($_SESSION['cart'])){
-                        echo ' <p>Chúc Mừng Bạn Mua Hàng Thành Công</p>';
-                        unset($_SESSION['cart']);
-                       } ?>
-                        </div>
-                    </div>
-                    <div class="col-lg-4">
+                            <?php
+                            $name=$_SESSION['nameUser'];
+                            $sql_getdata=mysqli_query($mysqli,"SELECT * FROM tbl_shipping WHERE name='$name' LIMIT 1");
+                            $count=mysqli_num_rows($sql_getdata);
+                            if($count>0){
+                                $row_get_data=mysqli_fetch_array($sql_getdata);
+                                $name=$row_get_data['name'];
+                                $phone=$row_get_data['phone'];
+                                $address=$row_get_data['address'];
+                                $note=$row_get_data['note'];
+                            }else{
+                                $name="";
+                                $phone="";
+                                $address="";
+                                $note="";
+                            }
+                            ?>
+                         <h4>Thông tin thanh toán</h4>
+                         <form action="" autocomplete="off" method="POST">
+                            <div class="form-group">
+                                <label for="Name">Name</label>
+                                    <input type="text" name="name" class="form-control" value="<?php echo $name ?>" placeholder="...."/>
+                                
+                            </div>
+                            <div class="form-group">
+                            <label for="Phone">Phone</label>
+                                    <input type="text" name="phone" class="form-control" value="<?php echo $phone ?>" placeholder="...."/>
+                            </div>
+                            <div class="form-group">
+                            <label for="Address">Address</label>
+                                    <input type="text" name="address" class="form-control" value="<?php echo $address ?>" placeholder="...."/>
+                            </div>
+                    
+                            <div class="form-group">
+                            <label for="note">note</label>
+                                    <input type="text" name="note" class="form-control" value="<?php echo $note ?>" placeholder="...."/>
+                            </div>
+                           
                         <div class="checkout-inner">
                             <div class="checkout-payment">
                                 <div class="payment-methods">
@@ -75,7 +123,7 @@
                                     </div>
                                     <div class="payment-method">
                                         <div class="custom-control custom-radio">
-                                            <input type="radio" class="custom-control-input" id="payment-5" name="payment">
+                                            <input type="radio" class="custom-control-input" id="payment-5" name="payment" value="Chuyen Khoan">
                                             <label class="custom-control-label" for="payment-5">Cash on Delivery</label>
                                         </div>
                                         <div class="payment-content" id="payment-5-show">
@@ -86,12 +134,21 @@
                                     </div>
                                 </div>
                                 <div class="checkout-btn">
-                                    <button>Place Order</button>
+                                
+                                <button type="submit" name="checkout" onclick="window.location.href='Pages/main/thanhtoan.php'">Place Order</button>
+                                
                                 </div>
                             </div>
                         </div>
+                    
+                     
+                
+            
+                         </form>
+                        </div>
                     </div>
-                </div>
+                 
+                   
             </div>
         </div>
         <!-- Checkout End -->

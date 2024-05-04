@@ -1,20 +1,56 @@
 <?php
-if(isset($_GET['trang'])){
-    $page=$_GET['trang'];
-}else{
-    $page='';
-}
-if($page==''||$page==1){
-    $begin=0;
-}
-else{
-    $begin=($page*3)-3;
-}
+ 
+ // if(isset($_GET['trang'])){
+ //     $page=$_GET['trang'];
+ // }else{
+ //     $page='';
+ // }
+ // if($page==''||$page==1){
+ //     $begin=0;
+ // }
+ // else{
+ //     $begin=($page*3)-3;
+ // } 
+ 
+ $soSanPhamTrenTrang = 3;
+ 
+ // Lấy trang hiện tại từ tham số GET, nếu không có thì mặc định là trang 1
+ $trangHienTai = isset($_GET['trang']) ? $_GET['trang'] : 1;
+ 
+ // Tính chỉ số bắt đầu của sản phẩm trên trang hiện tại
+ $batDau = ($trangHienTai - 1) * $soSanPhamTrenTrang;
+ 
+ // Lấy danh mục từ tham số GET
+ $idDanhMuc = isset($_GET['id']) ? $_GET['id'] : '';
+ 
+ // Truy vấn để lấy tổng số lượng sản phẩm trong danh mục
+ $sql_count = "SELECT COUNT(*) AS total FROM tbl_sanpham WHERE id_danhmuc = '$idDanhMuc'";
+ $query_count = mysqli_query($mysqli, $sql_count);
+ $row_count = mysqli_fetch_assoc($query_count);
+ $totalSanPham = $row_count['total'];
+ 
+ // Tính số trang
+ $tongSoTrang = ceil($totalSanPham / $soSanPhamTrenTrang);
+ $minPrice = isset($_GET['min_price']) ? $_GET['min_price'] : 0;
+ $maxPrice = isset($_GET['max_price']) ? $_GET['max_price'] : 999999999;
+ // Truy vấn lấy sản phẩm trong danh mục với phân trang
+ $sql_pro = "SELECT * FROM tbl_sanpham WHERE id_danhmuc = '$idDanhMuc'AND giasp >= $minPrice AND giasp <= $maxPrice ORDER BY id_sanpham DESC LIMIT $batDau, $soSanPhamTrenTrang";
+ $query_pro = mysqli_query($mysqli, $sql_pro);
+ $querysearch=mysqli_query($mysqli,$sql_pro);
+ $row_search=mysqli_fetch_array($querysearch);
+ $query_pro=mysqli_query($mysqli,$sql_pro);
+
+ 
+ 
 if(isset($_POST['timkiem'])){
     $tukhoa=$_POST['tukhoa'];
+    $sql_pro1="SELECT * FROM tbl_sanpham, tbl_danhmuc WHERE  tbl_sanpham.id_danhmuc=tbl_danhmuc.iddanhmuc 
+ AND tbl_sanpham.tensanpham LIKE '%$tukhoa%' OR tbl_sanpham.id_danhmuc LIKE '%$tukhoa%' OR tbl_sanpham.giasp LIKE '%$tukhoa%'" ;
+}
+else{
+    $sql_pro1="SELECT * FROM tbl_sanpham WHERE id_danhmuc = '$idDanhMuc'AND giasp >= $minPrice AND giasp <= $maxPrice ORDER BY id_sanpham DESC LIMIT $batDau, $soSanPhamTrenTrang";
 }
 
-$sql_pro1="SELECT * FROM tbl_sanpham, tbl_danhmuc WHERE  tbl_sanpham.id_danhmuc=tbl_danhmuc.iddanhmuc AND tbl_sanpham.tensanpham LIKE '%".$tukhoa."'" ;
 $query_pro1=mysqli_query($mysqli,$sql_pro1);
 
 
@@ -44,10 +80,10 @@ $query_pro1=mysqli_query($mysqli,$sql_pro1);
                                     <div class="row">
                                         <div class="col-md-4">
                                             <div class="product-search">
-                                                <form action="index.php?quanly=timkiem" method="GET">
-                                                <input type="text" name="timkiem" placeholder="Search">
-                                                <button><i class="fa fa-search"></i></button>
-                                                </form>
+                                            <form action="index.php?quanly=timkiem"  method="POST">
+                                                <input type="text" name="tukhoa" placeholder="Search">
+                                                <button type="submit" name="timkiem"><i class="fa fa-search"></i></button>
+                                            </form>
                                             </div>
                                         </div>
                                         <div class="col-md-4">
@@ -105,10 +141,10 @@ $query_pro1=mysqli_query($mysqli,$sql_pro1);
                                            
                                         </a>
                                         <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="#"><i class="fa fa-search"></i></a>
-                                        </div>
+                                    <a href="Pages/main/themgiohang.php?idsanpham=<?php echo $row_pro['id_sanpham']?>"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="Pages/main/themyeuthich.php?idsanpham=<?php echo $row_pro['id_sanpham']?>"><i class="fa fa-heart"></i></a>
+                                      <a href="index.php?quanly=sanpham&id=<?php echo $row_pro['id_sanpham']?>"><i class="fa fa-search"></i></a>
+                                </div>
                                     </div>
                                     <div class="product-price">
                                         <h3><span>$</span><?php echo number_format($row_pro['giasp']) ?></h3>
@@ -125,65 +161,20 @@ $query_pro1=mysqli_query($mysqli,$sql_pro1);
                         
                         <!-- Pagination Start -->
                         <div class="col-md-12">
-                            <nav aria-label="Page navigation example">
-                            <?php
-                             
-                                   $result=mysqli_query($mysqli,'SELECT * From tbl_sanpham, tbl_danhmuc');
-                                   $row_db=mysqli_num_rows($result);
-                                   echo $row_db;
-                                   $trang=ceil($row_db/3);
-                                   ?>
-                                <ul class="pagination justify-content-center">
-                                 
-                                    <li class="page-item disabled">
-                                        <a class="page-link" href="#" tabindex="-1">Previous</a>
-                                    </li>
-                                 
-                                    <?php
-                                  for($i=1;$i<=3;$i++){
-                                  ?>
-                                    <li class="page-item active"><a class="page-link" 
-                                    href="index.php?quanly=danhmucsanpham&id=<?php echo $i ?>"><?php echo $i?></a></li>
-                                    <?php
-                                  }
-                                   ?>
-                                   
-                                    <!--
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                -->
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">Next</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                            <script>
-                                /*
-                             var count = 0;
-                            $(document).ready(function() {
-                                $('.page-link').click(function() {
-                                    count = count + 1;
-                                    $.get('handlepaginnation.php', {
-                                        page: count
-                                    }, function(data) {
-                                        console.log("🚀 Next", data)
-                                        $('.pagination justify-content-center').html(data);
-                                    })
-                                });
-                            });
-                            $(document).ready(function() {
-                                $('.').click(function() {
-                                    count = count - 1;
-                                    $.get('handlepaginnation.php', {
-                                        page: count
-                                    }, function(data) {
-                                        $('.pagination justify-content-center').html(data);
-                                    })
-                                });
-                            });
-                             */
-                        </script>
-                        </div>
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item <?php echo ($trangHienTai <= 1) ? 'disabled' : ''; ?>">
+                <a class="page-link" href="index.php?quanly=danhmucsanpham&id=<?php echo $idDanhMuc; ?>&trang=<?php echo ($trangHienTai - 1); ?>" tabindex="-1">Previous</a>
+            </li>
+            <?php for ($i = 1; $i <= $tongSoTrang; $i++) { ?>
+                <li class="page-item <?php echo ($i == $trangHienTai) ? 'active' : ''; ?>"><a class="page-link" href="index.php?quanly=danhmucsanpham&id=<?php echo $idDanhMuc; ?>&trang=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+            <?php } ?>
+            <li class="page-item <?php echo ($trangHienTai >= $tongSoTrang) ? 'disabled' : ''; ?>">
+                <a class="page-link" href="index.php?quanly=danhmucsanpham&id=<?php echo $idDanhMuc; ?>&trang=<?php echo ($trangHienTai + 1); ?>">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>
                         
                         <!-- Pagination Start -->
                     </div>           

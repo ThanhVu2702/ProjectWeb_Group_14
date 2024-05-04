@@ -13,10 +13,7 @@
     <td style="text-align:left;font-weight:bold;font-style:italic;color:coral">Giá Sản Phẩm:</td>
      <td><input type="text" name="giasp" style="width:100%"></td>
 </tr>
-<tr>
-<td style="text-align:left;font-weight:bold;font-style:italic;color:coral">Số Lượng:</td>
-<td><input type="text" name="soluong" style="width:100%;"></td>
-</tr>
+
 <tr>
 <td style="text-align:left;font-weight:bold;font-style:italic;color:coral">Hình Ảnh </td>
 <td><input type="file" name="hinhanh" style="width:100%;"></td>

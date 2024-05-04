@@ -1,6 +1,5 @@
 <?php
-$sql_lietkedsdonhang="SELECT * FROM tbl_cart,tbl_taikhoan, tbl_khachhang WHERE tbl_cart.id_khachhang=tbl_taikhoan.USERID AND 
-tbl_cart.id_khachhang=tbl_khachhang.MAKH ";
+$sql_lietkedsdonhang="SELECT * FROM tbl_cart,tbl_taikhoan, tbl_khachhang WHERE tbl_cart.id_khachhang=tbl_taikhoan.USERID";
 $querry_lietkedonhang = mysqli_query($mysqli,$sql_lietkedsdonhang);
 ?>
 
@@ -11,8 +10,6 @@ $querry_lietkedonhang = mysqli_query($mysqli,$sql_lietkedsdonhang);
      <th>Mã Đơn Hàng</th>
      <th>Tên Khách Hàng</th>
      <th>Email</th>
-     <th>Địa Chỉ</th>
-     <th>SDT</th>
      <th>Tình Trạng</th>
      <th>Quản lý</th>
 </tr>
@@ -26,8 +23,6 @@ $i++;
     <td><?php echo $row_dh['code_cart']?></td>
     <td><?php echo $row_dh['USERNAME']?></td>
     <td><?php echo $row_dh['EMAIL']?></td>
-    <td><?php echo $row_dh['DIACHI']?></td>
-    <td><?php echo $row_dh['SDT']?></td>   
     <td>
      <?php
      if($row_dh['cart_status']==1)

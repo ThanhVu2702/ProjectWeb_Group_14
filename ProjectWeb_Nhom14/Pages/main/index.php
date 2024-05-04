@@ -86,7 +86,7 @@ $query_newpro=mysqli_query($mysqli,$sql_pro2);
                            
                             <div class="product-price">
                                 <h3><?php echo number_format($row_sanpham['giasp'],0,',','.') ?></h3>
-                                <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                <a class="btn" href="Pages/main/themgiohang.php?idsanpham=<?php echo $row_sanpham['id_sanpham']?>"><i class="fa fa-shopping-cart"></i>Buy Now</a>
                             </div>
                         </div>
             
@@ -131,9 +131,9 @@ $query_newpro=mysqli_query($mysqli,$sql_pro2);
                                     <img src="<?php echo 'Admin/modules/quanlysanpham/uploads/'.$row_sanpham1['hinhanh'] ?>" alt="<?php $row_sanpham['tensanpham'] ?>">
                                 </a>
                                 <div class="product-action">
-                                    <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                    <a href="#"><i class="fa fa-heart"></i></a>
-                                    <a href="#"><i class="fa fa-search"></i></a>
+                                    <a href="Pages/main/themgiohang.php?idsanpham=<?php echo $row_sanpham1['id_sanpham']?>"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="Pages/main/themyeuthich.php?idsanpham=<?php echo $row_sanpham1['id_sanpham']?>"><i class="fa fa-heart"></i></a>
+                                      <a href="index.php?quanly=sanpham&id=<?php echo $row_sanpham1['id_sanpham']?>"><i class="fa fa-search"></i></a>
                                 </div>
                             </div>
                             <div class="product-price">

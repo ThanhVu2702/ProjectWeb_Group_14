@@ -13,7 +13,7 @@ if($cart_query){
          VALUE('".$id_sanpham."','".$code_order."','".$soluong."')";
          mysqli_query($mysqli,$insert_cart_details);
     }
+
     header('Location:../../index.php?quanly=checkout');
-   
 }
 ?>

@@ -28,6 +28,9 @@
        elseif($pivot=="timkiem"){
         include("./Pages/main/timkiem.php");
        }
+       elseif($pivot=="contact"){
+         include("./Pages/main/contact.php");
+       }
        ?>
         
        

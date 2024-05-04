@@ -15,6 +15,7 @@ foreach($login as $log){
     if($log['USERNAME']==$user && $log['PASSWORD']==$pass &&$log['MAQUYEN']==0 && $log['enable']==1){
        $_SESSION['nameUser']=$log['USERNAME'];
        $_SESSION['IDCustomer']=$log['MAKH'];
+       $_SESSION['USERID']=$log['USERID_KH'];
        echo 'success-user';
        break;
     }
@@ -22,6 +23,7 @@ foreach($login as $log){
         $_SESSION['nameUser'] = $log['USERNAME'];
         $_SESSION['role'] = $log['MAQUYEN'];
         $_SESSION['IDStaff'] = $log['MANV'];
+        $_SESSION['USERID']=$log['USERID_NV'];
         echo 'success-admin';
         break;
     }else if($log['USERNAME'] !=$user){

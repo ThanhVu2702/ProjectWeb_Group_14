@@ -114,14 +114,15 @@ if(isset($_SESSION['cart'])){
                                             <h2><?php echo number_format($tongtien+$ship).'vnd';?><span></span></h2>
                                         </div>
                                         <div class="cart-btn">
-                                            <button  onclick="window.location.href='index.php?quanly=checkout.php'">Update Cart</button>
-                                            <button onclick="window.location.href='index.php?quanly=checkout'">Checkout</button>
+                                            <button  onclick="window.location.href='index.php?quanly=checkout'">Đặt Hàng</button>
+                                          
                                          </div>
                                       <?php }else{
                                         echo '<p>Hiện tại Chưa Thể Mua Hàng</p>';
                                       }?>
                                     </div>
                                 </div>
+                                
                             </div>
                         </div>
                         

@@ -10,7 +10,6 @@ $querry_lietkesp = mysqli_query($mysqli,$sql_lietkesanpham);
     <th>Tên Sản Phẩm</th>
     <th>Mã Sản Phẩm</th>
     <th>Giá sản phẩm</th>
-    <th>Số Lượng</th>
     <th>ID Danh Mục</th>
     <th>Hình Ảnh</th>
     <th>Tóm Tắt</th>
@@ -27,7 +26,6 @@ $i++;
     <td><?php echo $row['tensanpham']?></td>
     <td><?php echo $row['masp']?></td>
     <td><?php echo $row['giasp']?></td>
-    <td><?php echo $row['soluong']?></td>
     <td><?php echo $row['id_danhmuc']?></td>
     <td><img src="modules/quanlysanpham/uploads/<?php echo $row['hinhanh']?>" width="150px"></td>
     <td><?php echo $row['tomtat']?></td>

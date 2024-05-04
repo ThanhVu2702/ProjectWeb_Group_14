@@ -25,7 +25,7 @@
                                     }
                                     ?>
                 
-                                    <a href="index.php?quanly=ContactUs" class="dropdown-item">Contact Us</a>
+                                    <a href="index.php?quanly=contact" class="dropdown-item">Contact Us</a>
                                 </div>
                             </div>
                             
@@ -50,7 +50,7 @@
                           
                             <?php else: ?>
                                 <div class="nav-item dropdown">
-                          <a href="http://localhost/%C4%90%E1%BB%93%20%C3%81n%20Web2/Pages/login.php" class="dropdown-item">Login</a>
+                          <a href="http://localhost:8080/%C4%90%E1%BB%93%20%C3%81n%20Web2/Pages/login.php" class="dropdown-item">Login</a>
                                 </div>
                         
                              </div>

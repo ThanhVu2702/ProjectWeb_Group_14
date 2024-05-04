@@ -19,4 +19,11 @@ header('Location:../../index.php?action=quanlydanhmucsanpham&query=them');
     mysqli_query($mysqli,$sql_xoa);
     header('Location:../../index.php?action=quanlydanhmucsanpham&query=them');
 }
+
+// if(isset($_POST['timkiem'])){
+//     $tukhoa=$_POST['tukhoa'];
+//     $sql_timkiem="SELECT * FROM  tbl_danhmuc WHERE tendanhmuc  LIKE '%".$tukhoa."' " ;
+//      mysqli_query($mysqli,$sql_timkiem);
+//     header('Location:../../index.php?action=quanlydanhmucsanpham&query=them');
+// }
 ?>

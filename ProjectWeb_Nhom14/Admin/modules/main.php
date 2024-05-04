@@ -12,6 +12,7 @@
        if($pivot=="quanlydanhmucsanpham"&& $query=="them"){
         include("modules/quanlydanhmucsp/them.php");
         include("modules/quanlydanhmucsp/lietke.php");
+        
        }elseif($pivot=="quanlydanhmucsanpham"&& $query=="sua"){
         include("modules/quanlydanhmucsp/sua.php");
        }
@@ -33,8 +34,9 @@
        elseif($pivot=="donhang"&&$query=="xemdonhang"){
         include("modules/quanlydonhang/xemdonhang.php");
        }
+       
        else{
-        include("modules/dashboard.php");
+        include("modules/ThongKe/dashboard.php");
        }
     
     ?>

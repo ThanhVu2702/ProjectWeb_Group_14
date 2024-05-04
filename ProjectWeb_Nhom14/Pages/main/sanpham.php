@@ -28,6 +28,7 @@ $sql_ctsanpham="SELECT * FROM tbl_sanpham,tbl_danhmuc WHERE tbl_sanpham.id_danhm
                                 </div>
                                
                                 <div class="col-md-7">
+                                    <form method="POST" action="Pages/main/themgiohang.php?idsanpham=<?php echo $row_chitiet['id_sanpham']?>">
                                     <div class="product-content">
                                         <div class="title"><h2><?php echo $row_chitiet['tensanpham'] ?></h2></div>
                                         <div class="ratting">
@@ -56,7 +57,7 @@ $sql_ctsanpham="SELECT * FROM tbl_sanpham,tbl_danhmuc WHERE tbl_sanpham.id_danhm
                                                 <button class="btn-plus"><i class="fa fa-plus"></i></button>
                                             </div>
                                         </div>
-                        -->
+                                         -->
                                         <div class="p-size">
                                             <h4>Size:</h4>
                                             <div class="btn-group btn-group-sm">
@@ -75,11 +76,12 @@ $sql_ctsanpham="SELECT * FROM tbl_sanpham,tbl_danhmuc WHERE tbl_sanpham.id_danhm
                                             </div> 
                                         </div>
                                         <div class="action">
-                                         <a class="btn" href="Pages/main/themgiohang.php?idsanpham=<?php echo $row_chitiet['id_sanpham']?>"><i class="fa fa-shopping-cart"></i>Add to Cart</a>
+                                         <button class="btn" name="themgiohang" type="submit" >
+                                         <i class="fa fa-shopping-cart"></i>Add to Cart</button>
                                             <a class="btn" href="#"><i class="fa fa-shopping-bag"></i>Buy Now</a>
                                         </div>
                                     </div>
-                                   
+                                    </form>
                                 </div>
                                 
                             </div>

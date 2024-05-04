@@ -1,18 +1,40 @@
-<?php 
-if(isset($_GET['trang'])){
-    $page=$_GET['trang'];
-}else{
-    $page='';
-}
-if($page==''||$page==1){
-    $begin=0;
-}
-else{
-    $begin=($page*3)-3;
-}
+ <?php 
+// if(isset($_GET['trang'])){
+//     $page=$_GET['trang'];
+// }else{
+//     $page='';
+// }
+// if($page==''||$page==1){
+//     $begin=0;
+// }
+// else{
+//     $begin=($page*3)-3;
+// } 
 
-$sql_pro="SELECT *FROM  tbl_sanpham,tbl_danhmuc Where  tbl_sanpham.id_danhmuc='$_GET[id]'
-ORDER BY tbl_sanpham.id_sanpham DESC LIMIT $begin,3";
+$soSanPhamTrenTrang = 3;
+
+// Lấy trang hiện tại từ tham số GET, nếu không có thì mặc định là trang 1
+$trangHienTai = isset($_GET['trang']) ? $_GET['trang'] : 1;
+
+// Tính chỉ số bắt đầu của sản phẩm trên trang hiện tại
+$batDau = ($trangHienTai - 1) * $soSanPhamTrenTrang;
+
+// Lấy danh mục từ tham số GET
+$idDanhMuc = isset($_GET['id']) ? $_GET['id'] : '';
+
+// Truy vấn để lấy tổng số lượng sản phẩm trong danh mục
+$sql_count = "SELECT COUNT(*) AS total FROM tbl_sanpham WHERE id_danhmuc = '$idDanhMuc'";
+$query_count = mysqli_query($mysqli, $sql_count);
+$row_count = mysqli_fetch_assoc($query_count);
+$totalSanPham = $row_count['total'];
+
+// Tính số trang
+$tongSoTrang = ceil($totalSanPham / $soSanPhamTrenTrang);
+$minPrice = isset($_GET['min_price']) ? $_GET['min_price'] : 0;
+$maxPrice = isset($_GET['max_price']) ? $_GET['max_price'] : 999999999;
+// Truy vấn lấy sản phẩm trong danh mục với phân trang
+$sql_pro = "SELECT * FROM tbl_sanpham WHERE id_danhmuc = '$idDanhMuc'AND giasp >= $minPrice AND giasp <= $maxPrice ORDER BY id_sanpham DESC LIMIT $batDau, $soSanPhamTrenTrang";
+$query_pro = mysqli_query($mysqli, $sql_pro);
 $querysearch=mysqli_query($mysqli,$sql_pro);
 $row_search=mysqli_fetch_array($querysearch);
 $query_pro=mysqli_query($mysqli,$sql_pro);
@@ -70,16 +92,17 @@ $row_tiltle=mysqli_fetch_array($query_cate);
                                                 <div class="dropdown">
                                                     <div class="dropdown-toggle" data-toggle="dropdown">Product price range</div>
                                                     <div class="dropdown-menu dropdown-menu-right">
-                                                        <a href="#" class="dropdown-item">$0 to $50</a>
-                                                        <a href="#" class="dropdown-item">$51 to $100</a>
-                                                        <a href="#" class="dropdown-item">$101 to $150</a>
-                                                        <a href="#" class="dropdown-item">$151 to $200</a>
-                                                        <a href="#" class="dropdown-item">$201 to $250</a>
-                                                        <a href="#" class="dropdown-item">$251 to $300</a>
-                                                        <a href="#" class="dropdown-item">$301 to $350</a>
-                                                        <a href="#" class="dropdown-item">$351 to $400</a>
-                                                        <a href="#" class="dropdown-item">$401 to $450</a>
-                                                        <a href="#" class="dropdown-item">$451 to $500</a>
+                                                        
+                                                        <a href="index.php?quanly=danhmucsanpham&id=<?php echo $idDanhMuc; ?>&trang=<?php echo $trangHienTai; ?>&min_price=0&max_price=50000" class="dropdown-item">$0 to $50</a>
+                                                        <a href="index.php?quanly=danhmucsanpham&id=<?php echo $idDanhMuc; ?>&trang=<?php echo $trangHienTai; ?>&min_price=51000&max_price=100000" class="dropdown-item">$51 to $100</a>
+                                                        <a href="index.php?quanly=danhmucsanpham&id=<?php echo $idDanhMuc; ?>&trang=<?php echo $trangHienTai; ?>&min_price=101000&max_price=150000" class="dropdown-item">$101 to $150</a>
+                                                        <a href="index.php?quanly=danhmucsanpham&id=<?php echo $idDanhMuc; ?>&trang=<?php echo $trangHienTai; ?>&min_price=151000&max_price=200000" class="dropdown-item">$151 to $200</a>
+                                                        <a href="index.php?quanly=danhmucsanpham&id=<?php echo $idDanhMuc; ?>&trang=<?php echo $trangHienTai; ?>&min_price=201000&max_price=250000" class="dropdown-item">$201 to $250</a>
+                                                        <a href="index.php?quanly=danhmucsanpham&id=<?php echo $idDanhMuc; ?>&trang=<?php echo $trangHienTai; ?>&min_price=251000&max_price=300000" class="dropdown-item">$251 to $300</a>
+                                                        <a href="index.php?quanly=danhmucsanpham&id=<?php echo $idDanhMuc; ?>&trang=<?php echo $trangHienTai; ?>&min_price=301000&max_price=350000" class="dropdown-item">$301 to $350</a>
+                                                        <a href="index.php?quanly=danhmucsanpham&id=<?php echo $idDanhMuc; ?>&trang=<?php echo $trangHienTai; ?>&min_price=351000&max_price=400000" class="dropdown-item">$351 to $400</a>
+                                                        <a href="index.php?quanly=danhmucsanpham&id=<?php echo $idDanhMuc; ?>&trang=<?php echo $trangHienTai; ?>&min_price=401000&max_price=450000" class="dropdown-item">$401 to $450</a>
+                                                        <a href="index.php?quanly=danhmucsanpham&id=<?php echo $idDanhMuc; ?>&trang=<?php echo $trangHienTai; ?>&min_price=451000&max_price=500000" class="dropdown-item">$451 to $500</a>
                                                     </div>
                                                 </div>
                                             </div>
@@ -107,10 +130,10 @@ $row_tiltle=mysqli_fetch_array($query_cate);
                                            
                                         </a>
                                         <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="#"><i class="fa fa-search"></i></a>
-                                        </div>
+                                    <a href="Pages/main/themgiohang.php?idsanpham=<?php echo $row_pro['id_sanpham']?>"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="Pages/main/themyeuthich.php?idsanpham=<?php echo $row_pro['id_sanpham']?>"><i class="fa fa-heart"></i></a>
+                                      <a href="index.php?quanly=sanpham&id=<?php echo $row_pro['id_sanpham']?>"><i class="fa fa-search"></i></a>
+                                </div>
                                     </div>
                                     <div class="product-price">
                                         <h3><span>$</span><?php echo number_format($row_pro['giasp']) ?></h3>
@@ -126,66 +149,21 @@ $row_tiltle=mysqli_fetch_array($query_cate);
                         </div>
                         
                         <!-- Pagination Start -->
-                        <div class="col-md-12">
-                            <nav aria-label="Page navigation example">
-                            <?php
-                             
-                                   $result=mysqli_query($mysqli,'SELECT * From tbl_sanpham, tbl_danhmuc');
-                                   $row_db=mysqli_num_rows($result);
-                                   echo $row_db;
-                                   $trang=ceil($row_db/3);
-                                   ?>
-                                <ul class="pagination justify-content-center">
-                                 
-                                    <li class="page-item disabled">
-                                        <a class="page-link" href="#" tabindex="-1">Previous</a>
-                                    </li>
-                                 
-                                    <?php
-                                  for($i=1;$i<=3;$i++){
-                                  ?>
-                                    <li class="page-item active"><a class="page-link" 
-                                    href="index.php?quanly=danhmucsanpham&id=<?php echo $i ?>"><?php echo $i?></a></li>
-                                    <?php
-                                  }
-                                   ?>
-                                   
-                                    <!--
-                                    <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                    <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                -->
-                                    <li class="page-item">
-                                        <a class="page-link" href="#">Next</a>
-                                    </li>
-                                </ul>
-                            </nav>
-                            <script>
-                                /*
-                             var count = 0;
-                            $(document).ready(function() {
-                                $('.page-link').click(function() {
-                                    count = count + 1;
-                                    $.get('handlepaginnation.php', {
-                                        page: count
-                                    }, function(data) {
-                                        console.log("🚀 Next", data)
-                                        $('.pagination justify-content-center').html(data);
-                                    })
-                                });
-                            });
-                            $(document).ready(function() {
-                                $('.').click(function() {
-                                    count = count - 1;
-                                    $.get('handlepaginnation.php', {
-                                        page: count
-                                    }, function(data) {
-                                        $('.pagination justify-content-center').html(data);
-                                    })
-                                });
-                            });
-                             */
-                        </script>
-                        </div>
+ <div class="col-md-12">
+    <nav aria-label="Page navigation example">
+        <ul class="pagination justify-content-center">
+            <li class="page-item <?php echo ($trangHienTai <= 1) ? 'disabled' : ''; ?>">
+                <a class="page-link" href="index.php?quanly=danhmucsanpham&id=<?php echo $idDanhMuc; ?>&trang=<?php echo ($trangHienTai - 1); ?>" tabindex="-1">Previous</a>
+            </li>
+            <?php for ($i = 1; $i <= $tongSoTrang; $i++) { ?>
+                <li class="page-item <?php echo ($i == $trangHienTai) ? 'active' : ''; ?>"><a class="page-link" href="index.php?quanly=danhmucsanpham&id=<?php echo $idDanhMuc; ?>&trang=<?php echo $i; ?>"><?php echo $i; ?></a></li>
+            <?php } ?>
+            <li class="page-item <?php echo ($trangHienTai >= $tongSoTrang) ? 'disabled' : ''; ?>">
+                <a class="page-link" href="index.php?quanly=danhmucsanpham&id=<?php echo $idDanhMuc; ?>&trang=<?php echo ($trangHienTai + 1); ?>">Next</a>
+            </li>
+        </ul>
+    </nav>
+</div>
                         
                         <!-- Pagination Start -->
                     </div>           
@@ -196,11 +174,11 @@ $row_tiltle=mysqli_fetch_array($query_cate);
                             <h2 class="title">Category</h2>
                             <nav class="navbar bg-light">
                                 <ul class="navbar-nav">
-                                    <li class="nav-item">
+                                    <li class="nav-item"> 
                                         <a class="nav-link" href="#"><i class="fa fa-female"></i>Fashion & Beauty</a>
                                     </li>
                                     <li class="nav-item">
-                                        <a class="nav-link" href="#"><i class="fa fa-child"></i>Kids & Babies Clothes</a>
+                                        <a class="nav-link" href="#"><i class="fa-solid fa-sitemap"></i>Kids & Babies Clothes</a>
                                     </li>
                                     <li class="nav-item">
                                         <a class="nav-link" href="#"><i class="fa fa-tshirt"></i>Men & Women Clothes</a>
