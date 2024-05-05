@@ -23,6 +23,7 @@ if(!empty($_POST)){
         execute($sqlInsert);
         $sql = "INSERT INTO tbl_khachhang(USERID_KH, enable_kh) VALUES((SELECT USERID FROM tbl_taikhoan WHERE USERNAME = '$username'), 1)";
         execute($sql);
+        $_SESSION['EMAIL']=$email;
         $_SESSION['USERNAME']=$username;
         $_SESSION['PASSWORD']=$password;
    

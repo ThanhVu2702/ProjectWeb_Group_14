@@ -122,7 +122,8 @@ $query_pro1=mysqli_query($mysqli,$sql_pro1);
                             </div>
                             <?php  while($row_pro=mysqli_fetch_array($query_pro1)){ ?>
                                 <h3><?php $_POST['tukhoa'] ?></h3>
-                            <div class="col-md-4">
+                        <div class="col-md-4">
+                            <form method="POST" action="Pages/main/themgiohang.php?idsanpham=<?php echo $row_pro['id_sanpham']?>">
                                 <div class="product-item">
                                     <div class="product-title">
                                         <a href="#"><?php echo $row_pro['tensanpham']?></a>
@@ -141,7 +142,8 @@ $query_pro1=mysqli_query($mysqli,$sql_pro1);
                                            
                                         </a>
                                         <div class="product-action">
-                                    <a href="Pages/main/themgiohang.php?idsanpham=<?php echo $row_pro['id_sanpham']?>"><i class="fa fa-cart-plus"></i></a>
+                                        <button class="btn" name="themgiohang" type="submit" >
+                                         <i class="fa fa-shopping-cart"></i></button>
                                     <a href="Pages/main/themyeuthich.php?idsanpham=<?php echo $row_pro['id_sanpham']?>"><i class="fa fa-heart"></i></a>
                                       <a href="index.php?quanly=sanpham&id=<?php echo $row_pro['id_sanpham']?>"><i class="fa fa-search"></i></a>
                                 </div>
@@ -150,9 +152,9 @@ $query_pro1=mysqli_query($mysqli,$sql_pro1);
                                         <h3><span>$</span><?php echo number_format($row_pro['giasp']) ?></h3>
                                         <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
                                     </div>
-                                    
+                            
                                 </div>
-                               
+                            </form>
                             </div>
                             <?php
                                     }

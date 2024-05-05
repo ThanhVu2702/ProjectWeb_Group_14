@@ -1,9 +1,12 @@
 <?php 
 session_start();
 include('../../Admin/config/config.php');
+require('../../Admin/Carbon/autoload.php');
+use Carbon\Carbon;
+use Carbon\CarbonInterval;
 if(isset($_SESSION['cart']) && isset($_SESSION['nameUser'])) {
     $id_KH = $_SESSION['USERID'];
-    
+    $now=Carbon::now('Asia/Ho_Chi_Minh');
     // Kiểm tra xem đã tồn tại giỏ hàng cho khách hàng này chưa
     $select_cart = "SELECT * FROM tbl_cart WHERE id_khachhang = '".$id_KH."'";
     $result = mysqli_query($mysqli, $select_cart);
@@ -15,8 +18,13 @@ if(isset($_SESSION['cart']) && isset($_SESSION['nameUser'])) {
     } else {
         // Nếu chưa tồn tại, tạo mới mã đơn hàng
         $code_order = rand(0, 9999);
+        $cart_payment=$_POST['payment'];
+        $id_dangky=$_SESSION['USERID'];
+        $sql_getdata=mysqli_query($mysqli,"SELECT * FROM tbl_shipping WHERE id_dangky='$id_dangky' LIMIT 1");
+        $row_get_data=mysqli_fetch_array($sql_getdata);
+        $id_shipping=$row_get_data['id_shipping'];
         // Thêm mới giỏ hàng cho khách hàng
-        $insert_cart = "INSERT INTO tbl_cart(id_khachhang, code_cart, cart_status) VALUES('".$id_KH."','".$code_order."',1)";
+        $insert_cart = "INSERT INTO tbl_cart(id_khachhang, code_cart, cart_status,cart_payment,cart_shipping, cart_date) VALUES('".$id_KH."','".$code_order."',1,'".$cart_payment."','".$id_shipping."','".$now."')";
         $cart_query = mysqli_query($mysqli, $insert_cart);
         if(!$cart_query) {
             // Xử lý lỗi khi thêm mới giỏ hàng không thành công

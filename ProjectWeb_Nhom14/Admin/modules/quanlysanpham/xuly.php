@@ -6,7 +6,7 @@ $giasp=$_POST['giasp'];
 $soluong=$_POST['soluong'];
 $hinhanh=$_FILES['hinhanh']['name'];
 $temp_hinhanh=$_FILES['hinhanh']['tmp_name'];
-$hinhanh=time().'_'.$hinhanh;
+$hinhanh_time = time().'_'.$hinhanh;
 $noidung=$_POST['noidung'];
 $tomtat=$_POST['tomtat'];
 $tinhtrang=$_POST['tinhtrang'];
@@ -14,17 +14,17 @@ $danhmuc=$_POST['danhmuc'];
 
 
 if(isset($_POST['themsanpham'])){
-    $sql_them="INSERT INTO tbl_sanpham(tensanpham,masp,giasp,soluong,hinhanh,noidung,tomtat,tinhtrang,id_danhmuc) 
-    VALUE('".$tensp."','".$masp."','".$giasp."','".$soluong."','".$hinhanh."','".$noidung."','".$tomtat."','".$tinhtrang."','".$danhmuc."')";
+    $sql_them="INSERT INTO tbl_sanpham(tensanpham,masp,giasp,hinhanh,noidung,tomtat,tinhtrang,id_danhmuc) 
+    VALUE('".$tensp."','".$masp."','".$giasp."','".$hinhanh_time."','".$noidung."','".$tomtat."','".$tinhtrang."','".$danhmuc."')";
     mysqli_query($mysqli,$sql_them);
-    move_uploaded_file($temp_hinhanh,'uploads/'.$hinhanh);
+    move_uploaded_file($temp_hinhanh,'uploads/'.$hinhanh_time);
     header('Location:../../index.php?action=quanlysanpham&query=them');
 }
 elseif(isset($_POST['suasanpham'])){
  if($hinhanh!=''){
-    move_uploaded_file($temp_hinhanh,'uploads/'.$hinhanh);
+    move_uploaded_file($temp_hinhanh,'uploads/'.$hinhanh_time);
    
-$sql_sua="UPDATE tbl_sanpham SET tensanpham='".$tensp."',masp='".$masp."',giasp='".$giasp."',soluong='".$soluong."',hinhanh='".$hinhanh."',noidung='".$noidung."',tomtat='".$tomtat."',tinhtrang='".$tinhtrang."',
+$sql_sua="UPDATE tbl_sanpham SET tensanpham='".$tensp."',masp='".$masp."',giasp='".$giasp."',hinhanh='".$hinhanh_time."',noidung='".$noidung."',tomtat='".$tomtat."',tinhtrang='".$tinhtrang."',
 id_danhmuc='".$danhmuc."'
  WHERE id_sanpham='$_GET[id_sanpham]'";
  $sql="SELECT * FROM tbl_sanpham WHERE id_sanpham='$_GET[id_sanpham]' LIMIT 1";
@@ -34,7 +34,7 @@ id_danhmuc='".$danhmuc."'
  }
 
  }else{
-    $sql_sua="UPDATE tbl_sanpham SET tensanpham='".$tensp."',masp='".$masp."',giasp='".$giasp."',soluong='".$soluong."',hinhanh='".$hinhanh."',noidung='".$noidung."',tomtat='".$tomtat."',tinhtrang='".$tinhtrang."',id_danhmuc='".$danhmuc."'
+    $sql_sua="UPDATE tbl_sanpham SET tensanpham='".$tensp."',masp='".$masp."',giasp='".$giasp."',noidung='".$noidung."',tomtat='".$tomtat."',tinhtrang='".$tinhtrang."',id_danhmuc='".$danhmuc."'
  WHERE id_sanpham='$_GET[id_sanpham]'";
  }
  mysqli_query($mysqli,$sql_sua);

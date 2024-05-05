@@ -14,16 +14,19 @@ $login=ReSultExecute($sql);
 foreach($login as $log){
     if($log['USERNAME']==$user && $log['PASSWORD']==$pass &&$log['MAQUYEN']==0 && $log['enable']==1){
        $_SESSION['nameUser']=$log['USERNAME'];
-       $_SESSION['IDCustomer']=$log['MAKH'];
-       $_SESSION['USERID']=$log['USERID_KH'];
+      $_SESSION['IDCustomer']=$log['USERID_KH'];
+       $_SESSION['USERID']=$log['USERID'];
+       $_SESSION['EMAIL']=$log['EMAIL'];
        echo 'success-user';
        break;
     }
     else if($log['USERNAME'] == $user && $log['PASSWORD'] == $pass && ($log['MAQUYEN'] == 1 || $log['MAQUYEN'] == 2) && $log['enable'] == 1){
         $_SESSION['nameUser'] = $log['USERNAME'];
         $_SESSION['role'] = $log['MAQUYEN'];
-        $_SESSION['IDStaff'] = $log['MANV'];
-        $_SESSION['USERID']=$log['USERID_NV'];
+       // $_SESSION['IDStaff'] = $log['USERID_NV'];
+        $_SESSION['IDCustomer'] = $log['USERID_NV'];
+        $_SESSION['USERID']=$log['USERID'];
+        $_SESSION['EMAIL']=$log['EMAIL'];
         echo 'success-admin';
         break;
     }else if($log['USERNAME'] !=$user){

@@ -1,15 +1,18 @@
 <?php
-$sql_lietkedsdonhang="SELECT * FROM tbl_cart,tbl_taikhoan WHERE tbl_cart.id_khachhang=tbl_taikhoan.USERID LIMIT 5";
+$id_khachhang=$_SESSION['USERID'];
+$sql_lietkedsdonhang="SELECT * FROM tbl_cart, tbl_taikhoan WHERE tbl_cart.id_khachhang=tbl_taikhoan.USERID AND 
+ tbl_cart.id_khachhang=$id_khachhang ORDER BY tbl_cart.code_cart LIMIT 50";
 $querry_lietkedonhang = mysqli_query($mysqli,$sql_lietkedsdonhang);
 ?>
 
-<p style="font-size:20px;text-align:center; color:coral; font-weight:bold">Danh Sách Đơn Hàng</p>
+<p style="font-size:20px;text-align:center; color:coral; font-weight:bold">Lịch Sử Đơn Hàng</p>
 <table style="width: 100%;" border="6",style="border-collapse:collapse">
 <tr>
      <th>Id</th>
      <th>Mã Đơn Hàng</th>
      <th>Tên Khách Hàng</th>
      <th>Email</th>
+     <th>Ngày Đặt Hàng</th>
      <th>Tình Trạng</th>
      <th>Quản lý</th>
 </tr>
@@ -23,6 +26,7 @@ $i++;
     <td><?php echo $row_dh['code_cart']?></td>
     <td><?php echo $row_dh['USERNAME']?></td>
     <td><?php echo $row_dh['EMAIL']?></td>
+    <td><?php echo $row_dh['cart_date']?></td>
     <td>
      <?php
      if($row_dh['cart_status']==1)
@@ -35,7 +39,7 @@ $i++;
      ?>
     </td>
     <td>
-        <a href="index.php?action=donhang&query=xemdonhang&code=<?php echo $row_dh['code_cart']?>">Xem Đơn Hàng</a>
+        <a href="index.php?quanly=xemdonhang&code=<?php echo $row_dh['code_cart']?>">Xem Đơn Hàng</a>
     </td>
 </tr>
 <?php

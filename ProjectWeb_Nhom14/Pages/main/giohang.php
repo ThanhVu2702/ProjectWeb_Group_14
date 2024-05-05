@@ -104,7 +104,7 @@ if(isset($_SESSION['cart'])){
                                 <div class="col-md-12">
                                     <div class="cart-summary">
                                     <?php if(isset($_SESSION['cart'])&&isset($_SESSION['nameUser'])){?>
-                                    
+                                       
                                         <div class="cart-content">
                                            
                                             <h1>Cart Summary</h1>
@@ -114,8 +114,8 @@ if(isset($_SESSION['cart'])){
                                             <h2><?php echo number_format($tongtien+$ship).'vnd';?><span></span></h2>
                                         </div>
                                         <div class="cart-btn">
-                                            <button  onclick="window.location.href='index.php?quanly=checkout'">Đặt Hàng</button>
-                                          
+                                            <button  onclick="window.location.href='index.php?quanly=vanchuyen'">Đặt Hàng</button>
+                                          <button type="submit" onclick="window.location.href='Pages/main/thanhtoan.php'">Place Order</button>
                                          </div>
                                       <?php }else{
                                         echo '<p>Hiện tại Chưa Thể Mua Hàng</p>';

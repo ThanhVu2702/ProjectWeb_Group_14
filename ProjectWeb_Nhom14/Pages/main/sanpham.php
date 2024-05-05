@@ -58,7 +58,7 @@ $sql_ctsanpham="SELECT * FROM tbl_sanpham,tbl_danhmuc WHERE tbl_sanpham.id_danhm
                                             </div>
                                         </div>
                                          -->
-                                        <div class="p-size">
+                                        <!-- <div class="p-size">
                                             <h4>Size:</h4>
                                             <div class="btn-group btn-group-sm">
                                                 <button type="button" class="btn">S</button>
@@ -74,11 +74,11 @@ $sql_ctsanpham="SELECT * FROM tbl_sanpham,tbl_danhmuc WHERE tbl_sanpham.id_danhm
                                                 <button type="button" class="btn">Black</button>
                                                 <button type="button" class="btn">Blue</button>
                                             </div> 
-                                        </div>
+                                        </div> -->
                                         <div class="action">
                                          <button class="btn" name="themgiohang" type="submit" >
                                          <i class="fa fa-shopping-cart"></i>Add to Cart</button>
-                                            <a class="btn" href="#"><i class="fa fa-shopping-bag"></i>Buy Now</a>
+                                            <button class="btn" name="themgiohang" type="submit" ><i class="fa fa-shopping-bag"></i>Buy Now</button>
                                         </div>
                                     </div>
                                     </form>

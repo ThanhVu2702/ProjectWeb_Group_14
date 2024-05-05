@@ -74,7 +74,7 @@ if(isset($_SESSION['cart'])&&$_GET['xoa']){
     $row=mysqli_fetch_array($query);
     if($row){
         $new_product=array(array('tensanpham'=>$row['tensanpham'],'id'=>$id,'soluong'=>$soluong,
-        'giasp'=>$row['giasp'],'hinhanh'=>$row['hinhanh']
+        'giasp'=>$row['giasp'],'hinhanh'=>$row['hinhanh'] 
         ));
         if(isset($_SESSION['cart'])){
             $found=false;

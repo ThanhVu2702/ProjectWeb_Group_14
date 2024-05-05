@@ -22,10 +22,7 @@ while($row = mysqli_fetch_array($querry_suasp)){
     <td style="text-align:left;font-weight:bold;font-style:italic;color:coral">Giá Sản Phẩm:</td>
      <td><input type="text" name="giasp" value="<?php echo $row['giasp']?>" style="width:100%"></td>
 </tr>
-<tr>
-<td style="text-align:left;font-weight:bold;font-style:italic;color:coral">Số Lượng:</td>
-<td><input type="text" name="soluong" value="<?php echo $row['soluong']?>" style="width:100%;"></td>
-</tr>
+
 <tr>
 <td style="text-align:left;font-weight:bold;font-style:italic;color:coral">Hình Ảnh </td>
 <td><input type="file" name="hinhanh" style="width:100%;">

@@ -7,16 +7,20 @@
                             <a href="index.php" class="nav-item nav-link active">Home</a>
                             <a href="index.php?quanly=giohang" class="nav-item nav-link">Cart</a>
                             <a href="index.php?quanly=checkout" class="nav-item nav-link">Checkout</a>
-        
+                             <?php  if(isset($_SESSION['nameUser'])){ ?>
+                            <a href="index.php?quanly=lichsudonhang" class="nav-item nav-link"> History Bill</a>
+                            
+                            <a href="index.php?quanly=xemdonhang" class="nav-item nav-link">Xem Đơn Hàng </a>
+                                   
+                            <a href="index.php?quanly=yeuthich" class="nav-item nav-link">Yêu Thích</a>
+                                
+                            <?php }else{?>
                             <a href="Pages/register.php" class="nav-item nav-link"> Register</a>
+                            <?php } ?>
                             <div class="nav-item dropdown">
                                 <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">Products</a>
                                 <div class="dropdown-menu">
-                                    <?php if(isset($_SESSION['nameUser'])){?>
-                                    <a href="index.php?quanly=giohang" class="dropdown-item">Wishlist</a>
-                                    <?php }else{?>
-                                        <a href="index.php?quanly=yeuthich" class="dropdown-item">Wishlist</a>
-                                        <?php }?> 
+                                   
                                     <?php 
                                     while($row_danhmuc = mysqli_fetch_array($querydanhmuc)){
                                     ?>
@@ -37,7 +41,7 @@
                             <?php if(isset($_SESSION['nameUser'])):
                               ?>
                             <div class="nav-item dropdown">
-                                <a href="../Pages/register.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Hello:<?php echo $_SESSION['nameUser'];
+                                <a href="../Pages/register.php" class="nav-link dropdown-toggle" data-toggle="dropdown">Hello:<?php echo $_SESSION['EMAIL'];
                                 ?></a>
                     
                                 <div class="dropdown-menu">

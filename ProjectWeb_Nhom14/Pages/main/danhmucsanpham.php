@@ -33,7 +33,7 @@ $tongSoTrang = ceil($totalSanPham / $soSanPhamTrenTrang);
 $minPrice = isset($_GET['min_price']) ? $_GET['min_price'] : 0;
 $maxPrice = isset($_GET['max_price']) ? $_GET['max_price'] : 999999999;
 // Truy vấn lấy sản phẩm trong danh mục với phân trang
-$sql_pro = "SELECT * FROM tbl_sanpham WHERE id_danhmuc = '$idDanhMuc'AND giasp >= $minPrice AND giasp <= $maxPrice ORDER BY id_sanpham DESC LIMIT $batDau, $soSanPhamTrenTrang";
+$sql_pro = "SELECT * FROM tbl_sanpham, tbl_danhmuc WHERE id_danhmuc = '$idDanhMuc'AND giasp >= $minPrice AND giasp <= $maxPrice AND tbl_sanpham.id_danhmuc=tbl_danhmuc.iddanhmuc ORDER BY id_sanpham DESC LIMIT $batDau, $soSanPhamTrenTrang";
 $query_pro = mysqli_query($mysqli, $sql_pro);
 $querysearch=mysqli_query($mysqli,$sql_pro);
 $row_search=mysqli_fetch_array($querysearch);
@@ -112,6 +112,7 @@ $row_tiltle=mysqli_fetch_array($query_cate);
                             </div>
                             <?php  while($row_pro=mysqli_fetch_array($query_pro)){ ?>
                             <div class="col-md-4">
+                            <form method="POST" action="Pages/main/themgiohang.php?idsanpham=<?php echo $row_pro['id_sanpham']?>">
                                 <div class="product-item">
                                     <div class="product-title">
                                         <a href="#"><?php echo $row_pro['tensanpham']?></a>
@@ -130,14 +131,16 @@ $row_tiltle=mysqli_fetch_array($query_cate);
                                            
                                         </a>
                                         <div class="product-action">
-                                    <a href="Pages/main/themgiohang.php?idsanpham=<?php echo $row_pro['id_sanpham']?>"><i class="fa fa-cart-plus"></i></a>
+                                        <button class="btn" name="themgiohang" type="submit" >
+                                         <i class="fa fa-shopping-cart"></i></button>
                                     <a href="Pages/main/themyeuthich.php?idsanpham=<?php echo $row_pro['id_sanpham']?>"><i class="fa fa-heart"></i></a>
                                       <a href="index.php?quanly=sanpham&id=<?php echo $row_pro['id_sanpham']?>"><i class="fa fa-search"></i></a>
                                 </div>
+                            </form>
                                     </div>
                                     <div class="product-price">
                                         <h3><span>$</span><?php echo number_format($row_pro['giasp']) ?></h3>
-                                        <a class="btn" href=""><i class="fa fa-shopping-cart"></i>Buy Now</a>
+                                        <button class="btn" name="themgiohang" type="submit" ><i class="fa fa-shopping-cart"></i>Buy Now</button>
                                     </div>
                                     
                                 </div>
@@ -237,10 +240,10 @@ $row_tiltle=mysqli_fetch_array($query_cate);
                                             <img src="img/product-9.jpg" alt="Product Image">
                                         </a>
                                         <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="#"><i class="fa fa-search"></i></a>
-                                        </div>
+                                    <a href="Pages/main/themgiohang.php?idsanpham=<?php echo $row_sanpham1['id_sanpham']?>"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="Pages/main/themyeuthich.php?idsanpham=<?php echo $row_sanpham1['id_sanpham']?>"><i class="fa fa-heart"></i></a>
+                                      <a href="index.php?quanly=sanpham&id=<?php echo $row_sanpham1['id_sanpham']?>"><i class="fa fa-search"></i></a>
+                                </div>
                                     </div>
                                     <div class="product-price">
                                         <h3><span>$</span>99</h3>

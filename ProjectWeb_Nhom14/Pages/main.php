@@ -31,6 +31,15 @@
        elseif($pivot=="contact"){
          include("./Pages/main/contact.php");
        }
+       elseif($pivot=="vanchuyen"){
+        include("./Pages/main/vanchuyen.php");
+       }
+       elseif($pivot=="lichsudonhang"){
+        include("./Pages/main/lichsudonhang.php");
+       }
+       elseif($pivot=="xemdonhang"){
+        include("./Pages/main/xemdonhang.php");
+       }
        ?>
         
        
