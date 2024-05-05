@@ -224,9 +224,9 @@ $query_pro1=mysqli_query($mysqli,$sql_pro1);
                                             <img src="img/product-10.jpg" alt="Product Image">
                                         </a>
                                         <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="#"><i class="fa fa-search"></i></a>
+                                        <a href="Pages/main/themgiohang.php?idsanpham=<?php echo $row_pro['id_sanpham']?>"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="Pages/main/themyeuthich.php?idsanpham=<?php echo $row_pro['id_sanpham']?>"><i class="fa fa-heart"></i></a>
+                                      <a href="index.php?quanly=sanpham&id=<?php echo $row_pro['id_sanpham']?>"><i class="fa fa-search"></i></a>
                                         </div>
                                     </div>
                                     <div class="product-price">
@@ -250,9 +250,9 @@ $query_pro1=mysqli_query($mysqli,$sql_pro1);
                                             <img src="img/product-9.jpg" alt="Product Image">
                                         </a>
                                         <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="#"><i class="fa fa-search"></i></a>
+                                        <a href="Pages/main/themgiohang.php?idsanpham=<?php echo $row_pro['id_sanpham']?>"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="Pages/main/themyeuthich.php?idsanpham=<?php echo $row_pro['id_sanpham']?>"><i class="fa fa-heart"></i></a>
+                                      <a href="index.php?quanly=sanpham&id=<?php echo $row_pro['id_sanpham']?>"><i class="fa fa-search"></i></a>
                                         </div>
                                     </div>
                                     <div class="product-price">
@@ -276,9 +276,9 @@ $query_pro1=mysqli_query($mysqli,$sql_pro1);
                                             <img src="img/product-8.jpg" alt="Product Image">
                                         </a>
                                         <div class="product-action">
-                                            <a href="#"><i class="fa fa-cart-plus"></i></a>
-                                            <a href="#"><i class="fa fa-heart"></i></a>
-                                            <a href="#"><i class="fa fa-search"></i></a>
+                                        <a href="Pages/main/themgiohang.php?idsanpham=<?php echo $row_pro['id_sanpham']?>"><i class="fa fa-cart-plus"></i></a>
+                                    <a href="Pages/main/themyeuthich.php?idsanpham=<?php echo $row_pro['id_sanpham']?>"><i class="fa fa-heart"></i></a>
+                                      <a href="index.php?quanly=sanpham&id=<?php echo $row_pro['id_sanpham']?>"><i class="fa fa-search"></i></a>
                                         </div>
                                     </div>
                                     <div class="product-price">
