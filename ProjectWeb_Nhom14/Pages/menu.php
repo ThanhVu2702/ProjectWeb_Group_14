@@ -6,12 +6,10 @@
                       
                             <a href="index.php" class="nav-item nav-link active">Home</a>
                             <a href="index.php?quanly=giohang" class="nav-item nav-link">Cart</a>
-                            <a href="index.php?quanly=checkout" class="nav-item nav-link">Checkout</a>
+                            <a href="index.php?quanly=contact" class="nav-item nav-link">Contact Us</a>
                              <?php  if(isset($_SESSION['nameUser'])){ ?>
                             <a href="index.php?quanly=lichsudonhang" class="nav-item nav-link"> History Bill</a>
-                            
-                            <a href="index.php?quanly=xemdonhang" class="nav-item nav-link">Xem Đơn Hàng </a>
-                                   
+                            <a href="index.php?quanly=checkout" class="nav-item nav-link">Checkout</a>    
                             <a href="index.php?quanly=yeuthich" class="nav-item nav-link">Yêu Thích</a>
                                 
                             <?php }else{?>
@@ -28,8 +26,6 @@
                                     <?php
                                     }
                                     ?>
-                
-                                    <a href="index.php?quanly=contact" class="dropdown-item">Contact Us</a>
                                 </div>
                             </div>
                             
