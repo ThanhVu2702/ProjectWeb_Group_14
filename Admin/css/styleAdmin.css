@@ -31,19 +31,55 @@ h2 {
     font-weight: 700;
 }
 
-ul {
-    list-style: none;
-    text-align: center;
-    border: 1px solid black;
-    height:80px;
-  
+form{
+    margin: 20px auto;
+    justify-content: center;
 }
+form input{
+    width: 50% !important;
+}
+
+ul.pagination {
+    list-style: none;
+    padding-left: 40px;
+    gap: 20px;
+    text-align: center;
+    height:80px;
+    display: flex;
+    align-items: center;
+}
+ul.pagination a{
+    background-color: blanchedalmond;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #ccc;
+    justify-content: center;
+    font-size: 22px;
+    text-align: center;
+    color: #FF6F61;
+
+}
+ul.pagination li.active a{
+    background-color: #fff;
+}
+ul.pagination a:hover{
+    opacity: 0.6;
+    transition: ease-in 0.1s;
+}
+
 table{
     margin: 20px auto;
 }
 table td{
     padding: 5px;
+    min-width: 40px;
+    text-align: center;
 }
+
 
 
 @media(min-width: 992px) {
@@ -73,7 +109,11 @@ table td{
     transition: background 0.5s;
     z-index: 11;
 }
-
+.AdminList{
+    margin: 20px !important;
+    display: flex;
+    justify-content: center;
+}
 .back-to-top i {
     padding-top: 12px;
     color: #ffffff;
