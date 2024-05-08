@@ -109,6 +109,9 @@ table td{
     transition: background 0.5s;
     z-index: 11;
 }
+form{
+    display: flex;
+}
 .AdminList{
     margin: 20px !important;
     display: flex;
