@@ -40,7 +40,7 @@ while($row = mysqli_fetch_array($querry_suasp)){
 <tr>
     <td  style="text-align:left;font-weight:bold;font-style:italic;color:coral">Danh Mục Sản Phẩm:</td>
      <td>
-        <select name="danhmuc">
+        <select class="form-control" name="danhmuc">
             <?php 
             $sql_danhmuc="SELECT * FROM tbl_danhmuc ORDER BY iddanhmuc DESC";
             $querydanhmuc=mysqli_query($mysqli,$sql_danhmuc);
@@ -62,7 +62,7 @@ while($row = mysqli_fetch_array($querry_suasp)){
 <tr>
     <td  style="text-align:left;font-weight:bold;font-style:italic;color:coral">Tình Trạng:</td>
      <td>
-        <select name="tinhtrang">
+        <select class="form-control" name="tinhtrang">
             <?php
             if($row['tinhtrang'] ==1){
             ?>

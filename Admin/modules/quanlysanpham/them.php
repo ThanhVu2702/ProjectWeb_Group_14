@@ -29,7 +29,7 @@
         <tr>
             <td style="text-align:left;font-weight:bold;font-style:italic;color:coral">Danh Mục Sản Phẩm:</td>
             <td>
-                <select name="danhmuc">
+                <select class="form-control" name="danhmuc">
                     <?php
                     $sql_danhmuc = "SELECT * FROM tbl_danhmuc ORDER BY iddanhmuc DESC";
                     $querydanhmuc = mysqli_query($mysqli, $sql_danhmuc);
@@ -45,7 +45,7 @@
         <tr>
             <td style="text-align:left;font-weight:bold;font-style:italic;color:coral">Tình Trạng:</td>
             <td>
-                <select name="tinhtrang">
+                <select class="form-control" name="tinhtrang">
                     <option value="1">Kích Hoạt</option>
                     <option value="0">Ẩn</option>
                 </select>
